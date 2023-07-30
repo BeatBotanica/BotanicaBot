@@ -1,19 +1,16 @@
-# Discord Bot TypeScript Template
+# Samplify
 
-A simple TypeScript boilerplate for Discord bots, using <a href="https://discordjs.guide/">Discord.js</a>.
+This is a Discord bot named Samplify that allows users to search for music samples and view the details of the samples they find.
 
-## Set Up a New Bot
+## Adding the bot to a server
 
-* Fork the repository and rename `config/config.example.json` to `config/config.json`. 
+Click [this](https://discord.com/api/oauth2/authorize?client_id=1129971995799465995&permissions=18496&scope=bot) link to add the bot to your discord server
 
-* Place your bot token from the <a href="https://discord.com/developers">Discord Developer Portal</a> into `config/config.json`, as well as your bot's Client ID (visible in Discord with Developer Mode switched on).
+## Commands
+The bot responds to the following command:
 
-* Run `npm i`, then start the bot with `npm run start`!
+### /find \<search query\>
+Searches for music samples related to the provided \<search query\>
 
-## Add a New Command
-
-* Add the SlashCommandBuilder for your command in `commands/commandRegister.ts`.
-
-* Make a file for your command (see `commands/exampleCommand.ts`) with an exported function to provide command functionality.
-
-* Add a case for the command in the `commands/commandRegister.ts` switch (see lines 15-17). This tells the bot what to do when your command is executed.
+Example usage:
+```/find MF DOOM```
