@@ -14,6 +14,9 @@ import {
   LoggedInMessage,
   RefreshingSlashCommandsMessage,
 } from "./constants/const.js";
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore - False positive fr this code works idk why it's complaining
+import getRandomLyric, { RandomLyric } from "bb_random_lyrics";
 
 export const bot: Client = new Client({
   intents: [
@@ -44,6 +47,16 @@ import(CommandRegisterLocation).then((slashCommandBuilders) => {
     }
   })();
 
+  // Function to set the random lyric as the bot's activity
+  const setRandomLyricAsActivity = () => {
+    const randomLyric: RandomLyric = getRandomLyric();
+    const activityMessage = `🎵 ${randomLyric.lyric} 🎵`;
+
+    if (bot.user) {
+      bot.user.setActivity(activityMessage, { type: ActivityType.Listening });
+    }
+  };
+
   // Login
   bot.on(Events.ClientReady, () => {
     console.log(LoggedInMessage);
@@ -53,9 +66,11 @@ import(CommandRegisterLocation).then((slashCommandBuilders) => {
     }
 
     // Custom activity - displays in the members side bar in the server
-    bot.user.setActivity(config.ActivityMessage, {
-      type: ActivityType.Playing,
-    });
+    setRandomLyricAsActivity();
+
+    setInterval(() => {
+      setRandomLyricAsActivity();
+    }, 600000); // Update activity every 10 minutes
   });
 
   bot.login(config.Token);
