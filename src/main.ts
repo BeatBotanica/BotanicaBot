@@ -16,7 +16,7 @@ import {
 } from "./constants/const.js";
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore - False positive fr this code works idk why it's complaining
-import getRandomLyric, { RandomLyric } from "bb_random_lyrics";
+import getRandomLyric, { RandomLyric } from "bb_random_lyrics/random_lyric.js";
 
 export const bot: Client = new Client({
   intents: [
