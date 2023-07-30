@@ -7,10 +7,11 @@
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
-    "allowJs": true,
+    "allowJs": true
   },
     "include": [
-    "src",
-    "node_modules/bb_random_lyrics"
-  ]
+    "src/**/*",
+    "node_modules/bb_random_lyrics/*"
+  ],
+  "files": ["node_modules/bb_random_lyrics/lyrics.json"]
 }
