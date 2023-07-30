@@ -2,7 +2,7 @@ import { SlashCommandBuilder } from "@discordjs/builders";
 import { CommandInteraction, Events } from "discord.js";
 import { UnrecognizedCommandMessage } from "../constants/const.js";
 import { bot } from "../main.js";
-import { doExampleCommand } from "./exampleCommand.js";
+import { doFind } from "./find.js";
 
 // Functions called by commands
 
@@ -12,8 +12,8 @@ bot.on(Events.InteractionCreate, (interaction) => {
   const command = interaction as CommandInteraction;
 
   switch (command.commandName) {
-    case "examplecommand":
-      doExampleCommand(command);
+    case "find":
+      doFind(command);
       break;
     default:
       command.reply(`${UnrecognizedCommandMessage} ${command.user}`);
@@ -23,5 +23,5 @@ bot.on(Events.InteractionCreate, (interaction) => {
 // Commands
 
 export const exampleCommand = new SlashCommandBuilder()
-  .setName("examplecommand")
-  .setDescription("Say hello to the bot!");
+  .setName("find")
+  .setDescription("Find a song that contains samples");
